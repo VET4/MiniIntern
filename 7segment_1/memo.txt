@@ -1,0 +1,41 @@
+[미니인턴 수행과제 정리]
+
+* 루시드차트 링크
+https://lucid.app/documents#/documents?folder_id=home
+* 마크다운 사용법
+https://heropy.blog/2017/09/30/markdown/
+* 블록킹과 논블록킹
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=mikael2010&logNo=130094384689
+* 변수,상수,모듈 등 설명
+https://hizino.tistory.com/entry/Veriliog-%EC%83%81%EC%88%98-%EC%84%A0%EC%96%B8-%EB%AA%A8%EB%93%88-%ED%8F%AC%ED%8A%B8
+https://blog.naver.com/PostView.naver?blogId=culonion&logNo=80023894719
+* 7-segment 참고
+https://nate9389.tistory.com/105
+
+* 본과제: 7-segment 구현하기
+    - 7-segment 정의
+        - cathod type으로 정의
+        0: {1, 1, 1, 1, 1, 1, 0, 0}
+        1: {0, 1, 1, 0, 0, 0, 0, 0}
+        2: {1, 1, 0, 1, 1, 0, 1, 0}
+        3: {1, 1, 1, 1, 0, 0, 1, 0}
+        4: {0, 1, 1, 0, 0, 1, 1, 0}
+        5: {1, 0, 1, 1, 0, 1, 1, 0}
+        6: {1, 0, 1, 1, 1, 1, 1, 0}
+        7: {1, 1, 1, 0, 0, 0, 0, 0}
+        8: {1, 1, 1, 1, 1, 1, 1, 0}
+        9: {1, 1, 1, 1, 0, 1, 1, 0}
+    - Testbench 세팅
+        1. 인풋, 아웃풋 설정
+            - clk, rst, seg
+        2. 클럭 설정: 1s/1ms
+    - DUT(Design Under Test) 세팅
+        1. 인풋, 아웃풋 설정
+        2. 7-segment 진리표 작성
+        3. case문 작성
+        4.  
+
+* 추가 과제1: 3자리수 표기하기
+
+
+* 추가 과제2: 분과 초를 표기하기
