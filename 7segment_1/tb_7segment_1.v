@@ -9,7 +9,6 @@
 `timescale 1s/1ms
 
 module tb_7segment;
-
 reg clk;
 reg rst;
 wire [7:0] seg;
@@ -17,7 +16,6 @@ wire [7:0] seg;
 // 1Hz 클럭 생성
 always
 	#0.5 clk = ~clk;
-
 initial begin
 	// 초기값 생성
 	clk = 0;
@@ -38,5 +36,4 @@ dut_7segment DUT(
 	.rst	(rst),
 	.seg	(seg)
 );
-
 endmodule
