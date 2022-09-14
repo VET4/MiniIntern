@@ -8,7 +8,7 @@
 // 현실시간과 매칭을 위해 1초 단위로 설정
 `timescale 1s/1ms
 
-module tb_7segment;
+module tb_7segment_1;
 reg clk;
 reg rst;
 wire [7:0] seg;
@@ -31,7 +31,7 @@ $finish;
 end
 
 // dut 파일 연결
-dut_7segment DUT(
+dut_7segment_1 DUT(
 	.clk	(clk),
 	.rst	(rst),
 	.seg	(seg)

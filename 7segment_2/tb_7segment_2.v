@@ -8,11 +8,12 @@
 // 현실시간과 매칭을 위해 1초 단위로 설정
 `timescale 1s/1ms
 
-module tb_7segment;
+module tb_7segment_2;
 
 reg clk;
 reg rst;
 wire [7:0] seg;
+//reg count;
 
 // 1Hz 클럭 생성
 always
@@ -33,10 +34,17 @@ $finish;
 end
 
 // dut 파일 연결
-dut_7segment DUT(
+dut_7segment_2 DUT(
 	.clk	(clk),
 	.rst	(rst),
+//	.count	(count),
 	.seg	(seg)
 );
+
+/*
+always@(negedge clk) begin
+	$display("time: [%d]sec", count);
+end
+*/
 
 endmodule

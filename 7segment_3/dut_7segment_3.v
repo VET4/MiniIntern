@@ -8,7 +8,7 @@
 // 현실시간과 매칭을 위해 1초 단위로 설정
 `timescale 1s/1ms
 
-module dut_7segment(
+module dut_7segment_3(
 	input clk,
 	input rst,
 	output [7:0] seg
