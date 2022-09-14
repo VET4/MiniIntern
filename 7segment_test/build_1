@@ -1,0 +1,3 @@
+xvlog ./tb_7segment_1.v ./dut_7segment_1.v
+xelab tb_7segment_1 -debug wave -s tb_7segment_1
+xsim tb_7segment_1 -gui -wdb simulate_xsim_tb_7segment_1.wdb 

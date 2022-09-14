@@ -1,22 +1,23 @@
 ///////////////////////////////////////
 // TSN Lab 미니인턴
-// 추가 과제 1
+// 본과제
 // 작성: 노지훈
-// 1차 완성일: 
+// 1차 완성일: 20220911
 ///////////////////////////////////////
 
 // 현실시간과 매칭을 위해 1초 단위로 설정
 `timescale 1s/1ms
 
-module dut_7segment_2(
+module dut_7segment_test(
 	input clk,
 	input rst,
+	output [31:0] digit,
 	output [7:0] seg
 );
 	integer count = 0;
 	reg [7:0] s;
+	reg [31:0] c_digit;
 
-// 리셋 여부에 대한 내부 count 동작 선언
 always @ (posedge clk) begin
 	if (rst == 1) begin
 		count = 0;
@@ -27,9 +28,9 @@ always @ (posedge clk) begin
 			count = count + 1;
 		end
 	end
+	c_digit <= count;
 end
 
-// count 값에 따른 7-segment 선언
 always @ (negedge clk) begin
 	s <= 	(count == 0) ? 8'b11111100: //0
 			(count == 1) ? 8'b01100000: //1
@@ -43,7 +44,7 @@ always @ (negedge clk) begin
 			(count == 9) ? 8'b11100110: 8'b00000000; // 9, error: 0
 end
 
-// 최종 output인 seg에 값 할당
+assign digit = c_digit;
 assign seg = s; 
 
 endmodule
