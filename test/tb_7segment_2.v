@@ -12,15 +12,18 @@ module tb_7segment_2;
 reg clk;
 reg rst;
 wire [7:0] seg0;
-wire [7:0] seg1;
-wire [7:0] seg2;
+//wire [7:0] seg1;
+//wire [7:0] seg2;
 
 // 1Hz 클럭 생성
 always
 	#0.5 clk = ~clk;
 initial begin
-	// 초기값 생성
 	clk = 0;
+	rst = 1;
+#10
+	// 초기값 생성
+	
 	rst = 0;
 #20
 	// 리셋 동작 확인
@@ -36,6 +39,6 @@ end
 dut_7segment_2 DUT(
 	.clk	(clk),
 	.rst	(rst),
-	.seg	(seg)
+	.seg0	(seg0)
 );
 endmodule

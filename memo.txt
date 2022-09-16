@@ -36,11 +36,28 @@ https://nate9389.tistory.com/105
         4. 마지막에 값 할당
 
 * 추가 과제1: 3자리수 표기하기
-
+    - Testbench 세팅
+        1. 인풋, 아웃풋 설정
+            - clk, rst, seg0, seg1, seg2
+        2. 클럭 설정: 1s/1ms
+    - DUT(Design Under Test) 세팅
+        1. 인풋, 아웃풋 설정
+        2. 본과제의 카운트 기능 그대로 사용
 
 * 추가 과제2: 분과 초를 표기하기
-
-8'b11111100 : convert <= "0";//0
+    - Testbench 세팅
+        1. 인풋, 아웃풋 설정
+            - clk, rst, seg0, seg1, seg2
+        2. 클럭 설정: 1s/1ms
+    - DUT(Design Under Test) 세팅
+        1. 인풋, 아웃풋 설정
+        2. 과제2의 기능 그대로 사용
+        3. dsplay로 분과 초 표시
+        4. 그냥 표시하면 크기로 인해 공백이 많이 발생
+            -> ascii 코드 문자열로 처리할 예정
+        
+* case 메모
+        8'b11111100 : convert <= "0";//0
 		8'b01100000 : convert <= "1";//1
 		8'b11011010 : convert <= "2";//2
 		8'b11110010 : convert <= "3";//3
@@ -51,3 +68,18 @@ https://nate9389.tistory.com/105
 		8'b11111110 : convert <= "8";//8
 		8'b11100110 : convert <= "9";
 		8'b00000000 : convert <= "ERROR";
+
+* 과제 2 설계
+    - idea 1) 다중 if문
+        - count0 가 +1 카운트
+        - count0 9 넘어가면 count1 +1 카운트 count0 0 초기화
+        - count1 9 넘어가면 count2 +1 카운트 count0 0 초기화
+        - count2 9 넘어가면 전부 초기화
+    - idea 2) %로 잘라내기
+
+* display 함수로 분과 초 표기하기
+    - 그 동안 생각한 것
+        - 단순 testbench에서 display 쓸 생각만함
+        - 어떻게 하면 dut 내부 변수를 가져올 것인가
+    - 해결법
+        - 그냥 dut내부에서 display 함수 호출하면 됨
