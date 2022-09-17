@@ -45,9 +45,9 @@ always @ (posedge clk) begin
 		// 전체 카운터에서 각 자릿수로 할당하기 위해 숫자 분리
 		end else begin
 			total_count = total_count + 1;
-			count0 = total_count % 10;
-			count1 = ((total_count) / 10) % 10;
-			count2 = ((total_count) / 100) % 10;
+			count2 = total_count / 60;
+			count1 = (total_count % 60) / 10;
+			count0 = (total_count % 60) % 10;
 		end
 	end
 
