@@ -22,13 +22,13 @@ initial begin
 	// 초기값 생성
 	clk = 0;
 	rst = 0;
-#20
+#1200
 	// 리셋 동작 확인
 	rst = 1;
 #20
 	// 재동작 확인
 	rst = 0;
-#20
+#1200
 $finish;
 end
 
@@ -36,6 +36,8 @@ end
 dut_7segment_2 DUT(
 	.clk	(clk),
 	.rst	(rst),
-	.seg	(seg)
+	.seg0	(seg0),
+	.seg1	(seg1),
+	.seg2	(seg2)
 );
 endmodule
