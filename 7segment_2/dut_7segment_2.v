@@ -48,7 +48,7 @@ always @ (posedge clk) begin
 	end
 end
 
-// count 값에 따른 7-segment 선언
+// 각 count 값에 따른 7-segment 선언
 always @ (negedge clk) begin
 	// 자릿수 별 값 할당
 	case (count0)
@@ -64,6 +64,7 @@ always @ (negedge clk) begin
 		9 : s0 <= 8'b11100110; //9, d230
 		default: s0 <= 8'b00000000; //error
 	endcase
+	
 	case (count1)
 		0 : s1 <= 8'b11111100; //0, d252
 		1 : s1 <= 8'b01100000; //1, d96
@@ -77,6 +78,7 @@ always @ (negedge clk) begin
 		9 : s1 <= 8'b11100110; //9, d230
 		default: s1 <= 8'b00000000; //error
 	endcase
+
 	case (count2)
 		0 : s2 <= 8'b11111100; //0, d252
 		1 : s2 <= 8'b01100000; //1, d96
@@ -95,6 +97,6 @@ end
 // 최종 output인 seg에 값 할당
 assign seg0 = s0;
 assign seg1 = s1; 
-assign seg2 = s2; 
+assign seg2 = s2;
 
 endmodule
