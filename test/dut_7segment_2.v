@@ -12,7 +12,7 @@
 module dut_7segment_2(
 	input clk,
 	input rst,
-	// 3자릿수 Segment 인풋
+	// 3자릿수 Segment Output
 	output [7:0] seg0,
 	output [7:0] seg1,
 	output [7:0] seg2
@@ -20,9 +20,9 @@ module dut_7segment_2(
 	// 000 ~ 999까지 세는 카운터용 변수 선언
 	integer total_count = 0;
 	// 자릿수 별 값 할당을 위한 변수 선언
-	integer count0 = 0;
-	integer count1 = 0;
-	integer count2 = 0;
+	reg [1:0] count0 = 0;
+	reg [1:0] count1 = 0;
+	reg [1:0] count2 = 0;
 	reg [7:0] s0;
 	reg [7:0] s1;
 	reg [7:0] s2;
@@ -49,30 +49,29 @@ always @ (posedge clk) begin
 	end
 end
 
-// 7 segment 할당 반복작업 task로 정의
 task convert(
 	input [31:0] count,
 	output reg [7:0] s
 );
 	case (count)
-		0 : s = 8'b11111100; //0, d252
-		1 : s = 8'b01100000; //1, d96
-		2 : s = 8'b11011010; //2, d218
-		3 : s = 8'b11110010; //3, d242
-		4 : s = 8'b01100110; //4, d102
-		5 : s = 8'b10110110; //5, d182
-		6 : s = 8'b10111110; //6, d190
-		7 : s = 8'b11100000; //7, d224
-		8 : s = 8'b11111110; //8, d254
-		9 : s = 8'b11100110; //9, d230
+		0 : s = 8'b11111100; //0, hfc, d252
+		1 : s = 8'b01100000; //1, h60 ,d96
+		2 : s = 8'b11011010; //2, hda ,d218
+		3 : s = 8'b11110010; //3, hf2 ,d242
+		4 : s = 8'b01100110; //4, h66 ,d102
+		5 : s = 8'b10110110; //5, hb6 ,d182
+		6 : s = 8'b10111110; //6, hbe ,d190
+		7 : s = 8'b11100000; //7, he0 ,d224
+		8 : s = 8'b11111110; //8, hfe ,d254
+		9 : s = 8'b11100110; //9, he6 ,d230
 		default: s = 8'b00000000; //error
 	endcase
 endtask
 
 // 각 count 값에 따른 7-segment 선언
 always @ (negedge clk) begin
+	// 자릿수 별 값 할당
 	if (rst == 1) begin
-		// 리셋 초기화
 		total_count = 0;
 		count0 = 0;
 		count1 = 0;
@@ -81,7 +80,6 @@ always @ (negedge clk) begin
 		s1 <= 8'b11111100;
 		s2 <= 8'b11111100;
 	end else begin
-		// 자릿수 별 값 할당
 		convert(count0, s0);
 		convert(count1, s1);
 		convert(count2, s2);

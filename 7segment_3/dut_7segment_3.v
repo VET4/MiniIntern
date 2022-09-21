@@ -32,7 +32,7 @@ module dut_7segment_3(
 	reg [7:0] s1;
 	reg [7:0] s2;
 
-// 반복작업 task로 정의
+// 분과 초 표기용 반복작업 task로 정의
 task digit_converter(
 	input [31:0] count,
 	output [7:0] digit
@@ -80,6 +80,7 @@ always @ (posedge clk) begin
 
 end
 
+// 7 segment 할당 반복작업 task로 정의
 task convert(
 	input [31:0] count,
 	output reg [7:0] s
